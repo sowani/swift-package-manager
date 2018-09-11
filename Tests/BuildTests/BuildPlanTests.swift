@@ -920,7 +920,7 @@ final class BuildPlanTests: XCTestCase {
         )
         XCTAssertNoDiagnostics(diagnostics)
         
-        let result = BuildPlanResult(plan: try BuildPlan(buildParameters: mockBuildParameters(destinationTriple: .windows), graph: graph, diagnostics: diagnostics, fileSystem: fs))
+        let result = BuildPlanResult(plan: try BuildPlan(buildParameters: mockBuildParameters(destinationTriple: try! Triple("x86_64-unknown-windows-msvc")), graph: graph, diagnostics: diagnostics, fileSystem: fs))
         result.checkProductsCount(1)
         result.checkTargetsCount(2)
         
